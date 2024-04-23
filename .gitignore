@@ -1,0 +1,22 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+*.log
+*.jar
+*.war
+Thumbs.db
+
+# Exclude APK files and release directory
+/app/release/
+
+# Exclude all APKs from the project
+*.apk
+
+# Optionally exclude other build artifacts
+*.aab

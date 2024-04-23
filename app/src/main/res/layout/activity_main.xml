@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_gradient"
+        android:padding="16dp">
+
+        <!-- TextView for displaying song information -->
+        <TextView
+            android:id="@+id/songInfoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current Track Information"
+            style="@style/InfoTextViewStyle"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Spacer View to push elements to the bottom -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!-- Container for radio station buttons in a 2x2 grid -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- First row of two buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Radio Station Button 1 -->
+                <Button
+                    android:id="@+id/radioButton0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Svensk Folk"
+                    style="@style/RadioButtonsStyle"/>
+
+                <!-- Radio Station Button 2 -->
+                <Button
+                    android:id="@+id/radioButton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Radio Folk"
+                    style="@style/RadioButtonsStyle"/>
+            </LinearLayout>
+
+            <!-- Second row of two buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Radio Station Button 3 -->
+                <Button
+                    android:id="@+id/radioButton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Le Canard Folk"
+                    style="@style/RadioButtonsStyle"/>
+
+                <!-- Radio Station Button 4 -->
+                <Button
+                    android:id="@+id/radioButton3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Radio Siamsa"
+                    style="@style/RadioButtonsStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Button for detecting song info, now just below the 2x2 grid of radio buttons -->
+        <Button
+            android:id="@+id/detectSongButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Track Information"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            style="@style/DetectButtonStyle"/>
+    </LinearLayout>
+</ScrollView>
