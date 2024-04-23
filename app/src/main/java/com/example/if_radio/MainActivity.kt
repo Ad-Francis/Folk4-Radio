@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize buttons for playing radio stations
         radioStationUrls.forEachIndexed { index, url ->
-            val buttonId = resources.getIdentifier("radioButton$index", "id", packageName)
+            val buttonId = R.id::class.java.getField("radioButton$index").getInt(null)
             findViewById<Button>(buttonId)?.setOnClickListener {
                 playRadioStream(url)
             }
