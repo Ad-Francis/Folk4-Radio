@@ -26,6 +26,14 @@ class MainActivity : AppCompatActivity() {
         "https://dc1.serverse.com/proxy/wiupfvnu?mp=/TradCan",
         "https://cast02.siamsa.ie:8000/radio.mp3"
     )
+
+    private val radioStationNames = arrayOf(
+        "Svensk Folk",
+        "Radio Folk",
+        "Le Canard Folk",
+        "Radio Siamsa"
+    )
+
     private val recordAudioRequestCode = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         radioStationUrls.forEachIndexed { index, url ->
             val buttonId = R.id::class.java.getField("radioButton$index").getInt(null)
             findViewById<Button>(buttonId)?.setOnClickListener {
-                playRadioStream(url)
+                playRadioStream(url, radioStationNames[index])
             }
         }
     }
@@ -115,13 +123,12 @@ class MainActivity : AppCompatActivity() {
         Log.d("MediaRecorder", "Recording and detecting song")
     }
 
-    private fun playRadioStream(url: String) {
+    private fun playRadioStream(url: String, stationName: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 mediaPlayer.reset()
                 Log.d("MediaPlayer", "MediaPlayer reset")
 
-                // Resolve any redirections before setting the data source
                 val finalUrl = resolveRedirects(url)
                 Log.d("MediaPlayer", "Resolved URL: $finalUrl")
 
@@ -131,6 +138,7 @@ class MainActivity : AppCompatActivity() {
                     mediaPlayer.setOnPreparedListener {
                         Log.d("MediaPlayer", "MediaPlayer is prepared, starting playback")
                         mediaPlayer.start()
+                        songInfoTextView.text = stationName // Update the TextView to show the current station
                     }
                     mediaPlayer.setOnErrorListener { _, what, extra ->
                         Log.e("MediaPlayer", "Playback error: What: $what, Extra: $extra")
